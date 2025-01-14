@@ -1,0 +1,11 @@
+<app-currentuser></app-currentuser>
+<app-login></app-login>
+<div *ngIf="!showSignup">
+  <p>No tens compte? <a href="#" (click)="toggleSignup($event)">Crea'l ara.</a></p>
+</div>
+<div *ngIf="showSignup" class="signup-popup">
+  <app-signup (signupSuccess)="onSignupSuccess()"></app-signup>
+  <button class="close-button" (click)="toggleSignup()">X</button>
+</div>
+<app-logout></app-logout>
+

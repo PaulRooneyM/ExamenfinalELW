@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+:host {
+  font-family: Arial, Courier, monospace;
+  background-color: rgb(232, 232, 232);
+  color: #131313;
+}
+
+footer {
+  background-color: #357ABD;;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  font-size: 12px;
+}
+
+footer nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+footer nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+footer nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+footer nav ul li a:hover {
+  text-decoration: underline;
+}

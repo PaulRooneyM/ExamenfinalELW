@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Vendre Litecoin</h2>
+
+  <div class="balance">
+    <p>Saldo actual Litecoin: <strong>{{ litecoinAmount }} LTC</strong></p>
+  </div>
+
+  <div class="litecoinValue">
+    <p>Preu actual Litecoin: <strong>{{ litecoinPrice }} €</strong></p>
+  </div>
+
+  <div class="sell-section">
+    <label for="amount">Quantitat a vendre (en LTC):</label>
+    <input
+      type="number"
+      id="amount"
+      [(ngModel)]="amountToSell"
+      [min]="1"
+      [max]="litecoinAmount"
+      placeholder="Quantitat en LTC"
+      required />
+    <button (click)="sellLitecoin()" [disabled]="amountToSell <= 0 || amountToSell > litecoinAmount">
+      Vendre Litecoin
+    </button>
+
+
+    <div *ngIf="transactionSuccess" class="transaction-success">
+      <img [src]="imageURL" alt="Litecoin Sale Animation" />
+      <p class="success-message">Venta realitzada amb èxit!</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>

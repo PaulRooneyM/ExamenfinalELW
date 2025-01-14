@@ -1,0 +1,6 @@
+<div *ngIf="userId" class="user-info-container">
+  <p>Usuari: {{ userName }}</p>
+</div>
+<div *ngIf="!userId" class="user-info-container-no-user-info">
+  <p>Cap sessió iniciada.</p>
+</div>

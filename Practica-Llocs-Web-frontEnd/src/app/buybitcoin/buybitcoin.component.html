@@ -1,0 +1,38 @@
+<div class="container">
+  <h2>Comprar Bitcoin</h2>
+
+  <div class="balance">
+    <p>Saldo actual: <strong>{{ balance }}€</strong></p>
+  </div>
+
+
+  <div class="bitcoinValue">
+    <p>Preu actual Bitcoin: <strong>{{ bitcoinPrice }}€</strong></p>
+  </div>
+
+  <div class="buy-section">
+    <label for="amount">Quantitat a comprar (en EUR):</label>
+    <input
+      type="number"
+      id="amount"
+      [(ngModel)]="amountToBuy"
+      [min]="1"
+      [max]="balance"
+      placeholder="Quantitat en EUR"
+      required />
+    <button (click)="buyBitcoin()" [disabled]="amountToBuy <= 0 || amountToBuy > balance">
+      Comprar Bitcoin
+    </button>
+  </div>
+
+  <div *ngIf="transactionSuccess" class="transaction-success">
+    <img [src]="imageURL" alt="Bitcoin Purchase Animation" />
+    <p class="success-message">Compra realitzada amb èxit!</p>
+  </div>
+
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+</div>
+

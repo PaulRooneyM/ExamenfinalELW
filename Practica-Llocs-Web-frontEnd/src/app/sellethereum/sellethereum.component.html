@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Vendre Ethereum</h2>
+
+  <div class="balance">
+    <p>Saldo actual Ethereum: <strong>{{ ethereumAmount }} ETH</strong></p>
+  </div>
+
+  <div class="ethereumValue">
+    <p>Preu actual Ethereum: <strong>{{ ethereumPrice }} €</strong></p>
+  </div>
+
+  <div class="sell-section">
+    <label for="amount">Quantitat a vendre (en ETH):</label>
+    <input
+      type="number"
+      id="amount"
+      [(ngModel)]="amountToSell"
+      [min]="1"
+      [max]="ethereumAmount"
+      placeholder="Quantitat en ETH"
+      required />
+    <button (click)="sellEthereum()" [disabled]="amountToSell <= 0 || amountToSell > ethereumAmount">
+      Vendre Ethereum
+    </button>
+
+
+    <div *ngIf="transactionSuccess" class="transaction-success">
+      <img [src]="imageURL" alt="Ethereum Sale Animation" />
+      <p class="success-message">Venta realitzada amb èxit!</p>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">
+      <p>{{ errorMessage }}</p>
+    </div>
+  </div>

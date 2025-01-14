@@ -1,0 +1,38 @@
+<div class="loader"></div>
+<form (submit)="onSubmit($event)">
+  <label for="transactionType">Tipus de Transacció</label>
+  <select id="transactionType" #transactionType>
+    <option value="depositar">Dipositar</option>
+    <option value="retirar">Retirar</option>
+  </select>
+
+  <label for="amount">Quantitat</label>
+  <input type="number" id="amount" #amount required min="1">
+
+  <button type="submit" [disabled]="!userId">Enviar</button>
+</form>
+
+<div class="balance-container">
+  <h3>Valor net total (en EUR): <strong>{{ totalNetWorth }} €</strong></h3>
+</div>
+
+<div class="balance-container">
+  <h3>Saldo: <strong>{{ balance }} €</strong></h3>
+</div>
+
+<div class="balance-container">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png" alt="Bitcoin" class="coin-icon">
+  <h3>Saldo Bitcoin (en EUR): <strong>{{ userBitcoinValue }} €</strong></h3>
+</div>
+
+<div class="balance-container">
+  <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum" class="coin-icon">
+  <h3>Saldo Ethereum (en EUR): <strong>{{ userEthereumValue }} €</strong></h3>
+</div>
+
+<div class="balance-container">
+  <img src="https://cryptologos.cc/logos/litecoin-ltc-logo.png" alt="Litecoin" class="coin-icon">
+  <h3>Saldo Litecoin (en EUR): <strong>{{ userLitecoinValue }} €</strong></h3>
+</div>
+
+

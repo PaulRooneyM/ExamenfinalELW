@@ -1,0 +1,29 @@
+.user-info-container, .user-info-container-no-user-info {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.user-info-container p {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+.user-info-container-no-user-info  p {
+  font-size: 18px;
+  color: #333;
+  margin: 10px 0;
+}
+
+
+@media (max-width: 768px) {
+  .user-info-container {
+    width: 90%;
+    padding: 15px;
+  }
+}

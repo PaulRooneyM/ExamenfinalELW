@@ -1,0 +1,17 @@
+<form [formGroup]="signupForm" (submit)="onSubmit()">
+  <div class="group" >
+    <input required="" type="text" class="input" formControlName="username">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Usuari</label>
+  </div>
+
+  <div class="group">
+    <input required="" type="password" class="input" formControlName="password">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>Contrasenya</label>
+  </div>
+
+  <button type="submit">Registrar-se</button>
+</form>
