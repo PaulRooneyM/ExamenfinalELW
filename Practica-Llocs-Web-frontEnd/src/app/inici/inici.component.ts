@@ -27,8 +27,16 @@ export class IniciComponent {
   }
 
   private logVisit(): void {
+    const registreData = {
+      sessionId: this.sessionId,
+      userId: localStorage.getItem('userId'), // Puede ser null si no hay un usuario logueado
+      llocEvent: this.llocEvent,
+      tipusEvent: this.tipusEvent,
+    };
+
+
     console.log(`Page visited at: ${new Date().toISOString()}, Session ID: ${this.sessionId}`);
-    this.RegistreService.createRegistre({ sessionId: this.sessionId }).subscribe(
+    this.RegistreService.createRegistre({ registreData }).subscribe(
       (response: any) => {
         console.log('Visit logged successfully:', response);
       },

@@ -1,4 +1,4 @@
-import { registreModel } from "./registre.model";
+import { registreModel } from "./registre.model.js";
 import express from 'express';
 
 

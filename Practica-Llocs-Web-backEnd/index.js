@@ -30,7 +30,7 @@ app.use('/users', usersRouter);
 app.use('/coins', coinsRouter);
 app.use('/news', newsRouter);
 app.use('/media', mediaRouter);
-app.use('registre', registreRouter);
+app.use('/registre', registreRouter);
 
 // Inicialitzar les notícies
 async function initializeNews() {
