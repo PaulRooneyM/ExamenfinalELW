@@ -4,6 +4,8 @@ import { WalletService } from '../services/wallet.service';
 import { CryptoWalletService } from '../services/cyrptowallet.service';
 import { CommonModule } from '@angular/common';
 import { MediaService } from '../services/media.service';
+import { RegistreService } from '../services/registre.service';
+import { SessionService } from '../services/session.service';
 @Component({
   selector: 'app-buybitcoin',
   standalone: true,
@@ -19,6 +21,11 @@ export class BuybitcoinComponent {
   transactionSuccess: boolean = false;
   imageURL: string = '';
 
+
+  sessionId: string = '';
+  llocEvent: string = 'monedes(compra bitcoin)';
+  tipusEvent: string = 'click';
+
   balance = 0;
   userId: string | null = null;
   private intervalId: any;
@@ -26,6 +33,8 @@ export class BuybitcoinComponent {
   private walletService = inject(WalletService);
   private cryptoWalletService = inject(CryptoWalletService);
   private mediaService = inject(MediaService);
+  private RegistreService = inject(RegistreService);
+  private SessionService = inject(SessionService);
 
   constructor() {}
 
@@ -81,7 +90,30 @@ export class BuybitcoinComponent {
     );
   }
 
+  private logClick(): void {
+    const registreData = {
+      sessionId: this.sessionId,
+      userId: localStorage.getItem('userId'), // Puede ser null si no hay un usuario logueado
+      llocEvent: this.llocEvent,
+      tipusEvent: this.tipusEvent,
+    };
+
+
+    console.log(`Page visited at: ${new Date().toISOString()}, Session ID: ${this.sessionId}`);
+    this.RegistreService.createRegistre(registreData ).subscribe(
+      (response: any) => {
+        console.log('Visit logged successfully:', response);
+      },
+      (error) => {
+        console.error('Error logging visit:', error);
+      }
+    );
+
+  }
+
   buyBitcoin() {
+    this.sessionId = this.SessionService.getSessionId();
+    this.logClick();
     if (this.amountToBuy <= 0 || this.amountToBuy > this.balance) {
       this.errorMessage = "No tens prou saldo per comprar aquesta quantitat.";
       this.transactionSuccess = false;
