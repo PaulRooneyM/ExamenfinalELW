@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 
-export class MediaService {
+export class RegistreService {
   private http = inject(HttpClient);
 
   private baseUrl = 'http://localhost:3000/registre';
