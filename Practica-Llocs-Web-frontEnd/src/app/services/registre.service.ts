@@ -18,5 +18,8 @@ export class RegistreService {
     return this.http.post<any>(this.baseUrl, registreData);
   }
 
+  getRegistres(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ultimsevents`);
+  }
 
 }

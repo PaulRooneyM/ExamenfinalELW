@@ -4,6 +4,7 @@ import { MonedesComponent } from './monedes/monedes.component';
 import { NewsComponent } from './news/news.component';
 import { AccountComponent } from './account/account.component';
 import { WalletComponent } from './wallet/wallet.component';
+import { UltimseventsComponent } from './ultimsevents/ultimsevents.component';
 
 export const routes: Routes = [
   {
@@ -30,5 +31,11 @@ export const routes: Routes = [
     path:'cartera',
     component: WalletComponent,
     title: 'Cartera'
+  },
+  {
+    path:'ultimsevents',
+    component: UltimseventsComponent,
+    title: 'Ultims events'
   }
+
 ];
