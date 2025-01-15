@@ -23,7 +23,7 @@ export class BuybitcoinComponent {
 
 
   sessionId: string = '';
-  llocEvent: string = 'monedes(compra bitcoin)';
+  llocEvent: string = 'monedes';
   tipusEvent: string = 'click';
 
   balance = 0;

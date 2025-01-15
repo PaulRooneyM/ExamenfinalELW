@@ -23,7 +23,7 @@ export class BuyethereumComponent {
   imageURL = '';
 
   sessionId: string = '';
-  llocEvent: string = 'monedes(compra ethereum)';
+  llocEvent: string = 'monedes';
   tipusEvent: string = 'click';
 
   balance = 0;
