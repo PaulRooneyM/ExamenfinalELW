@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { RegistreService } from '../services/registre.service';
+import { SessionService } from '../services/session.service';
 @Component({
   selector: 'app-inici',
   standalone: true,
@@ -16,14 +17,17 @@ export class IniciComponent {
   tipusEvent: string = 'visita';
 
   private RegistreService = inject(RegistreService);
+  private SessionService = inject(SessionService);
 
   ngOnInit() {
-    this.sessionId = this.generateSessionId();
+    this.sessionId = this.SessionService.getSessionId();
     this.logVisit();
   }
 
   private generateSessionId(): string {
-    return Math.random().toString(36).substr(2, 9);
+    const sessionId = Math.random().toString(36).substr(2, 9);
+    localStorage.setItem('sessionId', sessionId);
+    return sessionId;
   }
 
   private logVisit(): void {

@@ -8,6 +8,8 @@ import { BuyethereumComponent } from "../buyethereum/buyethereum.component";
 import { SellethereumComponent } from "../sellethereum/sellethereum.component";
 import { BuylitecoinComponent } from "../buylitecoin/buylitecoin.component";
 import { SelllitecoinComponent } from "../selllitecoin/selllitecoin.component";
+import { RegistreService } from '../services/registre.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-monedes',
@@ -17,10 +19,44 @@ import { SelllitecoinComponent } from "../selllitecoin/selllitecoin.component";
   styleUrl: './monedes.component.css'
 })
 export class MonedesComponent implements OnInit {
+  constructor() {}
+  sessionId: string = '';
+  userId: string | null = null;
+  llocEvent: string = 'monedes';
+  tipusEvent: string = 'visita';
+
+  private RegistreService = inject(RegistreService);
+  private SessionService = inject(SessionService);
+
   ngOnInit() {
     this.showLoadingBar();
     setTimeout(() => this.hideLoadingBar(), 1500);
+    this.sessionId = this.SessionService.getSessionId();
+    this.logVisit();
   }
+
+  private logVisit(): void {
+    const registreData = {
+      sessionId: this.sessionId,
+      userId: localStorage.getItem('userId'), // Puede ser null si no hay un usuario logueado
+      llocEvent: this.llocEvent,
+      tipusEvent: this.tipusEvent,
+    };
+
+
+    console.log(`Page visited at: ${new Date().toISOString()}, Session ID: ${this.sessionId}`);
+    this.RegistreService.createRegistre(registreData ).subscribe(
+      (response: any) => {
+        console.log('Visit logged successfully:', response);
+      },
+      (error) => {
+        console.error('Error logging visit:', error);
+      }
+    );
+
+  }
+
+
 
   showLoadingBar() {
     const loader = document.querySelector('.loader') as HTMLElement;

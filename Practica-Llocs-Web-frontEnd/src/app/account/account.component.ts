@@ -26,7 +26,11 @@ export class AccountComponent {
     private RegistreService = inject(RegistreService);
 
     ngOnInit() {
-      this.sessionId = localStorage.getItem('sessionId') || this.generateSessionId();
+      if (localStorage.getItem('sessionId')) {
+        this.sessionId = localStorage.getItem('sessionId')!;
+      } else {
+        this.sessionId = this.generateSessionId();
+      }
       this.logVisit();
     }
 
