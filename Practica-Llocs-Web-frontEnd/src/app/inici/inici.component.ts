@@ -36,7 +36,7 @@ export class IniciComponent {
 
 
     console.log(`Page visited at: ${new Date().toISOString()}, Session ID: ${this.sessionId}`);
-    this.RegistreService.createRegistre({ registreData }).subscribe(
+    this.RegistreService.createRegistre(registreData ).subscribe(
       (response: any) => {
         console.log('Visit logged successfully:', response);
       },
