@@ -15,6 +15,7 @@ import { mediaModel, media } from './media/media.model.js';
 
 await mongoose.connect('mongodb://localhost:27017/myproject');
 
+
 const app = express();
 
 app.use(cors());
