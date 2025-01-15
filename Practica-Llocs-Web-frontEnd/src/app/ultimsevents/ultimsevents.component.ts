@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { RegistreService } from '../services/registre.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-ultimsevents',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './ultimsevents.component.html',
   styleUrl: './ultimsevents.component.css'
 })

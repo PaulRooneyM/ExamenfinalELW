@@ -7,3 +7,4 @@ export const registreRouter = Router();
 
 registreRouter.post('/', handleCrearRegistre)
 registreRouter.get('/ultimsevents', handleObtenirUltimsEvents)
+//registreRouter.get('/', handleGetVisitesCLicks);

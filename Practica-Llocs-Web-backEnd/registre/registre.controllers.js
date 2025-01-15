@@ -42,3 +42,40 @@ export async function handleObtenirUltimsEvents(req, res) {
         return res.status(500).json({ message: 'Error al obtener los registros' });
     }
 }
+
+
+/*
+export async function handleGetVisitesCLicks(req, res) {
+    const { dataInici, dataFinal, llocEvent, tipusEvent } = req.query;
+
+    const filters = {};
+
+    if (dataInici) {
+        filters.createdAt = { $gte: new Date(dataInici) };
+    }
+
+    if (dataFinal) {
+        filters.createdAt = filters.createdAt || {};
+        filters.createdAt.$lte = new Date(dataFinal);
+    }
+
+    if (llocEvent) {
+        filters.llocEvent = llocEvent;
+    }
+
+    if (tipusEvent) {
+        filters.tipusEvent = tipusEvent;
+    }
+
+    try {
+        const events = await registreModel.find(filters);
+        const visites = events.filter(event => event.tipusEvent === 'visita').length;
+        const clicks = events.filter(event => event.tipusEvent === 'click').length;
+
+        return res.status(200).json({ visites, clicks });
+    } catch (error) {
+        console.error("Error al obtener las visitas y clicks:", error);
+        return res.status(500).json({ message: 'Error al obtener las visitas y clicks' });
+    }
+
+*/
